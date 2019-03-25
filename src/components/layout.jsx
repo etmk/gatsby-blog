@@ -5,15 +5,19 @@ import { Provider } from 'react-redux';
 import store from '../utils/store';
 import DesktopContainer from './DesktopContainer';
 import MobileContainer from './MobileContainer';
-import { FINISH_LOADING } from '../modules/actionTypes';
+import { FINISH_LOADING, SET_PAGE } from '../modules/actionTypes';
 
+/* global window */
 const ResponsiveContainer = ({ children }) => {
   const [isLoaded, setIsLoaded] = useState(store.getState().isPageLoaded.isPageLoaded);
 
   useEffect(() => {
     if (!isLoaded) {
+      const { pathname } = window.location;
+      const endPoint = pathname !== '/' ? pathname.substring(1) : 'home';
       setIsLoaded(true);
       store.dispatch({ type: FINISH_LOADING });
+      store.dispatch({ type: SET_PAGE, payload: { [endPoint]: true } });
     }
   }, []);
 
@@ -33,8 +37,16 @@ const ResponsiveContainer = ({ children }) => {
         render={data => (
           <>
             <div>
-              <DesktopContainer siteTitle={data.site.siteMetadata.title}>{children}</DesktopContainer>
-              <MobileContainer siteTitle={data.site.siteMetadata.title}>{children}</MobileContainer>
+              <DesktopContainer
+                siteTitle={data.site.siteMetadata.title}
+              >
+                {children}
+              </DesktopContainer>
+              <MobileContainer
+                siteTitle={data.site.siteMetadata.title}
+              >
+                {children}
+              </MobileContainer>
             </div>
           </>
         )}

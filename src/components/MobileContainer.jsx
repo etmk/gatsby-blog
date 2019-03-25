@@ -24,18 +24,22 @@ const styles = {
 
 class MobileContainer extends Component {
   onMenuClick = (page) => {
-    const { setPage, closeSideBar } = this.props;
+    const { setPage } = this.props;
     setPage({ [page]: true });
-    closeSideBar();
   }
 
   onItemClick = (btn) => {
     this[btn].click();
   }
 
+  onSidebarHide = () => {
+    const { closeSideBar } = this.props;
+    closeSideBar();
+  }
+
   render() {
     const {
-      children, siteTitle, pages, isOpened, openSideBar, closeSideBar,
+      children, siteTitle, pages, isOpened, openSideBar,
     } = this.props;
     const {
       home, dev, about, til,
@@ -50,9 +54,10 @@ class MobileContainer extends Component {
         <Sidebar
           as={Menu}
           animation="push"
-          onHide={closeSideBar}
+          onHide={this.onSidebarHide}
           vertical
           visible={isOpened}
+          width="thin"
         >
           <Menu.Item
             as="span"
