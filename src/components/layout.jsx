@@ -5,7 +5,6 @@ import { Provider } from 'react-redux';
 import store from '../utils/store';
 import DesktopContainer from './DesktopContainer';
 import MobileContainer from './MobileContainer';
-import 'semantic-ui-css/semantic.min.css';
 
 const ResponsiveContainer = ({ children }) => (
   <Provider store={store}>
@@ -32,7 +31,7 @@ const ResponsiveContainer = ({ children }) => (
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
 };
 
 export default ResponsiveContainer;

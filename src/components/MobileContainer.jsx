@@ -24,8 +24,9 @@ const styles = {
 
 class MobileContainer extends Component {
   onMenuClick = (page) => {
-    const { setPage } = this.props;
+    const { setPage, closeSideBar } = this.props;
     setPage({ [page]: true });
+    closeSideBar();
   }
 
   onItemClick = (btn) => {
@@ -53,17 +54,61 @@ class MobileContainer extends Component {
           vertical
           visible={isOpened}
         >
-          <Menu.Item as="span" active={home} onClick={() => this.onItemClick('homeBtn')}>
-            <Link ref={(btn) => { this.homeBtn = btn; }} style={styles.menuLink} to="/" onClick={() => this.onMenuClick('home')}>Home</Link>
+          <Menu.Item
+            as="span"
+            active={home}
+            onClick={() => this.onItemClick('homeBtn')}
+          >
+            <Link
+              ref={(btn) => { this.homeBtn = btn; }}
+              style={styles.menuLink}
+              to="/"
+              onClick={() => this.onMenuClick('home')}
+            >
+              Home
+            </Link>
           </Menu.Item>
-          <Menu.Item as="span" active={dev} onClick={() => this.onItemClick('devBtn')}>
-            <Link ref={(btn) => { this.devBtn = btn; }} style={styles.menuLink} to="/dev" onClick={() => this.onMenuClick('dev')}>Dev</Link>
+          <Menu.Item
+            as="span"
+            active={dev}
+            onClick={() => this.onItemClick('devBtn')}
+          >
+            <Link
+              ref={(btn) => { this.devBtn = btn; }}
+              style={styles.menuLink}
+              to="/dev"
+              onClick={() => this.onMenuClick('dev')}
+            >
+              Dev
+            </Link>
           </Menu.Item>
-          <Menu.Item as="span" active={about} onClick={() => this.onItemClick('aboutBtn')}>
-            <Link ref={(btn) => { this.aboutBtn = btn; }} style={styles.menuLink} to="/about" onClick={() => this.onMenuClick('about')}>About</Link>
+          <Menu.Item
+            as="span"
+            active={about}
+            onClick={() => this.onItemClick('aboutBtn')}
+          >
+            <Link
+              ref={(btn) => { this.aboutBtn = btn; }}
+              style={styles.menuLink}
+              to="/about"
+              onClick={() => this.onMenuClick('about')}
+            >
+              About
+            </Link>
           </Menu.Item>
-          <Menu.Item as="span" active={til} onClick={() => this.onItemClick('tilBtn')}>
-            <Link ref={(btn) => { this.tilBtn = btn; }} style={styles.menuLink} to="/til" onClick={() => this.onMenuClick('til')}>TIL</Link>
+          <Menu.Item
+            as="span"
+            active={til}
+            onClick={() => this.onItemClick('tilBtn')}
+          >
+            <Link
+              ref={(btn) => { this.tilBtn = btn; }}
+              style={styles.menuLink}
+              to="/til"
+              onClick={() => this.onMenuClick('til')}
+            >
+              TIL
+            </Link>
           </Menu.Item>
         </Sidebar>
 

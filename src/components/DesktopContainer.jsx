@@ -74,12 +74,12 @@ class DesktopContainer extends Component {
                 </Menu.Item>
               </Container>
             </Menu>
+            {children}
+            <footer style={{ marginTop: '3em' }}>
+              {`© ${new Date().getFullYear()} Sunjae Kim, All rights deserved`}
+            </footer>
           </Segment>
         </Visibility>
-        {children}
-        <footer style={{ marginTop: '3em' }}>
-          {`© ${new Date().getFullYear()} Sunjae Kim, All rights deserved`}
-        </footer>
       </Responsive>
     );
   }
