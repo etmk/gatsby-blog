@@ -7,6 +7,13 @@ import {
   Segment,
   Visibility,
 } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import { Link } from 'gatsby';
+import { SET_PAGE } from '../modules/actionTypes';
+
+const styles = {
+  menuLink: { padding: '1em 1.5em', color: '#333' },
+};
 
 /* global window */
 const getWidth = () => {
@@ -21,8 +28,16 @@ class DesktopContainer extends Component {
 
   showFixedMenu = () => this.setState({ fixed: true })
 
+  onMenuClick = (page) => {
+    const { setPage } = this.props;
+    setPage({ [page]: true });
+  }
+
   render() {
-    const { children, siteTitle } = this.props;
+    const { children, siteTitle, pages } = this.props;
+    const {
+      home, dev, about, til,
+    } = pages;
     const { fixed } = this.state;
 
     return (
@@ -45,24 +60,48 @@ class DesktopContainer extends Component {
               size="large"
             >
               <Container>
-                <Menu.Item as="a">Home</Menu.Item>
-                <Menu.Item as="a">Work</Menu.Item>
-                <Menu.Item as="a">Company</Menu.Item>
-                <Menu.Item as="a">Careers</Menu.Item>
+                <Menu.Item style={{ padding: 0 }} as="span" active={home}>
+                  <Link style={styles.menuLink} to="/" onClick={() => this.onMenuClick('home')}>Home</Link>
+                </Menu.Item>
+                <Menu.Item style={{ padding: 0 }} as="span" active={dev}>
+                  <Link style={styles.menuLink} to="/dev" onClick={() => this.onMenuClick('dev')}>Dev</Link>
+                </Menu.Item>
+                <Menu.Item style={{ padding: 0 }} as="span" active={about}>
+                  <Link style={styles.menuLink} to="/about" onClick={() => this.onMenuClick('about')}>About</Link>
+                </Menu.Item>
+                <Menu.Item style={{ padding: 0 }} as="span" active={til}>
+                  <Link style={styles.menuLink} to="/til" onClick={() => this.onMenuClick('til')}>TIL</Link>
+                </Menu.Item>
               </Container>
             </Menu>
           </Segment>
         </Visibility>
-
         {children}
+        <footer style={{ marginTop: '3em' }}>
+          {`© ${new Date().getFullYear()} Sunjae Kim, All rights deserved`}
+        </footer>
       </Responsive>
     );
   }
 }
 
 DesktopContainer.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
   siteTitle: PropTypes.string.isRequired,
+  setPage: PropTypes.func.isRequired,
+  pages: PropTypes.shape({
+    home: PropTypes.bool,
+    dev: PropTypes.bool,
+    about: PropTypes.bool,
+    til: PropTypes.bool,
+  }).isRequired,
 };
 
-export default DesktopContainer;
+export default connect(
+  state => ({
+    pages: state.pages,
+  }),
+  dispatch => ({
+    setPage: page => dispatch({ type: SET_PAGE, payload: page }),
+  }),
+)(DesktopContainer);
