@@ -6,6 +6,7 @@ import styled from '@emotion/styled';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
+import './dev.css';
 
 const Content = styled.div`
   text-align: start;
@@ -23,33 +24,36 @@ const MarkerHeader = styled.h3`
   margin-bottom: 10px;
 `;
 
+const BlogPostBox = styled.div`
+  margin-bottom: 30px;
+`;
+
 const Dev = ({ data }) => {
   const target = data.allMarkdownRemark.edges.filter(ele => ele.node.frontmatter.category === 'tech');
   return (
     <Layout>
       <SEO title="Dev" />
-      <Container>
+      <Container text>
         <Content>
-          <h1>Dev</h1>
           {target.map(({ node }) => (
-            <div key={node.id} style={{ margin: '70px auto' }}>
-              <Link
-                to={node.frontmatter.path}
-                css={css`
-                text-decoration: none;
-                color: inherit;
+            <Link
+              key={node.id}
+              to={node.frontmatter.path}
+              css={css`
               `}
-              >
-                <MarkerHeader>
-                  {node.frontmatter.title}
-                  {' '}
-                </MarkerHeader>
-                <div>
-                  <ArticleDate>{node.frontmatter.date}</ArticleDate>
+            >
+              <BlogPostBox>
+                <div className="blog-post">
+                  <MarkerHeader>
+                    {node.frontmatter.title}
+                    {' '}
+                  </MarkerHeader>
+                  <div>
+                    <ArticleDate>{node.frontmatter.date}</ArticleDate>
+                  </div>
                 </div>
-                <p>{node.excerpt}</p>
-              </Link>
-            </div>
+              </BlogPostBox>
+            </Link>
           ))}
         </Content>
       </Container>

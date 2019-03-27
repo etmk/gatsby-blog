@@ -7,6 +7,8 @@ import DesktopContainer from './DesktopContainer';
 import MobileContainer from './MobileContainer';
 import { FINISH_LOADING, SET_PAGE } from '../modules/actionTypes';
 
+import './layout.css';
+
 /* global window */
 const ResponsiveContainer = ({ children }) => {
   const [isLoaded, setIsLoaded] = useState(store.getState().isPageLoaded.isPageLoaded);
@@ -37,18 +39,16 @@ const ResponsiveContainer = ({ children }) => {
         `}
         render={data => (
           <>
-            <div>
-              <DesktopContainer
-                siteTitle={data.site.siteMetadata.title}
-              >
-                {children}
-              </DesktopContainer>
-              <MobileContainer
-                siteTitle={data.site.siteMetadata.title}
-              >
-                {children}
-              </MobileContainer>
-            </div>
+            <DesktopContainer
+              siteTitle={data.site.siteMetadata.title}
+            >
+              {children}
+            </DesktopContainer>
+            <MobileContainer
+              siteTitle={data.site.siteMetadata.title}
+            >
+              {children}
+            </MobileContainer>
           </>
         )}
       />
