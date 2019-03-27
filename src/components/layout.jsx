@@ -14,7 +14,8 @@ const ResponsiveContainer = ({ children }) => {
   useEffect(() => {
     if (!isLoaded) {
       const { pathname } = window.location;
-      const endPoint = pathname !== '/' ? pathname.substring(1) : 'home';
+      const splited = pathname.split('/')[1];
+      const endPoint = splited !== '' ? splited : 'home';
       setIsLoaded(true);
       store.dispatch({ type: FINISH_LOADING });
       store.dispatch({ type: SET_PAGE, payload: { [endPoint]: true } });
