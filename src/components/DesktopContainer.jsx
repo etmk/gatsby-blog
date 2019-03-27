@@ -74,6 +74,7 @@ class DesktopContainer extends Component {
                 </Menu.Item>
               </Container>
             </Menu>
+            <br />
             {children}
             <footer style={{ marginTop: '3em' }}>
               {`© ${new Date().getFullYear()} Sunjae Kim, All rights deserved`}

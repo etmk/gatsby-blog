@@ -21,7 +21,7 @@ const ResponsiveContainer = ({ children }) => {
     }
   }, []);
 
-  if (!isLoaded) return <div>the page is loading...</div>;
+  if (!isLoaded) return <div>Loading, please wait ...</div>;
   return (
     <Provider store={store}>
       <StaticQuery
