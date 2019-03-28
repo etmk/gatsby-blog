@@ -2,11 +2,14 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import { Container } from 'semantic-ui-react';
+import { Container, Divider } from 'semantic-ui-react';
 import Layout from '../components/layout';
 
 const Content = styled.div`
+  margin-top: 1.5em;
   text-align: start;
+  display: flex;
+  flex-flow: column;
 `;
 
 const MarkedHeader = styled.h1`
@@ -16,6 +19,7 @@ const MarkedHeader = styled.h1`
 
 const HeaderDate = styled.h3`
   margin-top: 10px;
+  margin-bottom: 1.5em;
   color: #bbb;
   font-size: 20px;
 `;
@@ -34,6 +38,7 @@ const Template = ({ data }) => {
           <HeaderDate>
             {post.frontmatter.date}
           </HeaderDate>
+          <Divider />
           <MarkDown dangerouslySetInnerHTML={{ __html: post.html }} />
         </Content>
       </Container>

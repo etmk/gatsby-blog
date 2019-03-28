@@ -1,5 +1,9 @@
 body {
-  background-color: rgba(0, 0, 0, 0.01);
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+p {
+  line-height: 200%;
 }
 
 .ui.large.pointing.secondary.menu {

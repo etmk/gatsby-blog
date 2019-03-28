@@ -133,7 +133,7 @@ class MobileContainer extends Component {
                 </Menu.Item>
               </Menu>
               {children}
-              <footer style={{ marginTop: '3em' }}>
+              <footer style={{ marginTop: '3em', marginBottom: '5em' }}>
                 {`© ${new Date().getFullYear()} Sunjae Kim, All rights deserved`}
               </footer>
             </Container>

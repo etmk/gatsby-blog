@@ -3,6 +3,7 @@ import { Link, graphql } from 'gatsby';
 import { Container } from 'semantic-ui-react';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
+import PropTypes from 'prop-types';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
@@ -12,24 +13,31 @@ const Content = styled.div`
   text-align: start;
 `;
 
-const ArticleDate = styled.h5`
-  display: inline;
-  color: #bbb;
-  margin-bottom: 10px;
-`;
-
-const MarkerHeader = styled.h3`
-  display: inline;
-  border-radius: 1em 0 1em 0;
-  margin-bottom: 10px;
-`;
-
 const BlogPostBox = styled.div`
   margin-bottom: 30px;
 `;
 
+const MarkerHeader = styled.h3`
+  margin-bottom: 0px;
+`;
+
+const ArticleDate = styled.h5`
+  display: inline;
+  color: #bbb;
+`;
+
+// TODO: 해시태그가 많아질 시 다음 라인으로 넘기지 않고 ... 처리 해야 함
+const HashTagBox = styled.div`
+  margin-top: 7px;
+`;
+
+const HashTag = styled.span`
+  color: #bbb;
+  margin-right: 8px;
+`;
+
 const Dev = ({ data }) => {
-  const target = data.allMarkdownRemark.edges.filter(ele => ele.node.frontmatter.category === 'tech');
+  const target = data.allMarkdownRemark.edges.filter(ele => ele.node.frontmatter.category === 'dev');
   return (
     <Layout>
       <SEO title="Dev" />
@@ -48,9 +56,10 @@ const Dev = ({ data }) => {
                     {node.frontmatter.title}
                     {' '}
                   </MarkerHeader>
-                  <div>
-                    <ArticleDate>{node.frontmatter.date}</ArticleDate>
-                  </div>
+                  <ArticleDate>{node.frontmatter.date}</ArticleDate>
+                  <HashTagBox>
+                    {node.frontmatter.tags.map(tag => <HashTag key={tag}>{tag}</HashTag>)}
+                  </HashTagBox>
                 </div>
               </BlogPostBox>
             </Link>
@@ -59,6 +68,14 @@ const Dev = ({ data }) => {
       </Container>
     </Layout>
   );
+};
+
+Dev.propTypes = {
+  data: PropTypes.shape({
+    allMarkdownRemark: PropTypes.shape({
+      edges: PropTypes.array,
+    }),
+  }).isRequired,
 };
 
 export default Dev;
@@ -80,6 +97,7 @@ export const query = graphql`
             date(formatString: "DD MMMM, YYYY")
             path
             category
+            tags
           }
         }
       }
