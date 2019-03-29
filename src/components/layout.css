@@ -6,6 +6,24 @@ p {
   line-height: 200%;
 }
 
+a {
+  color: #333;
+}
+
+a:hover {
+  color: #333;
+}
+
+code {
+  background:rgba(200,200,200, 0.2);
+  padding:6px;
+  font-size: 14.8px;
+}
+
+div.ui.divider.footer-divider {
+  margin-top: 5em;
+}
+
 .ui.large.pointing.secondary.menu {
   border-bottom: 1px solid rgba(34,36,38,.15);
 }

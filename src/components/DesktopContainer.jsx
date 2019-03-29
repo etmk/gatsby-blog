@@ -6,6 +6,7 @@ import {
   Responsive,
   Segment,
   Visibility,
+  Divider,
 } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { Link } from 'gatsby';
@@ -76,6 +77,7 @@ class DesktopContainer extends Component {
             </Menu>
             <br />
             {children}
+            <Divider className="footer-divider" />
             <footer style={{ marginTop: '3em', marginBottom: '5em' }}>
               {`© ${new Date().getFullYear()} Sunjae Kim, All rights deserved`}
             </footer>

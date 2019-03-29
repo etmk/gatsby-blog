@@ -23,7 +23,7 @@ const MarkerHeader = styled.h3`
 
 const ArticleDate = styled.h5`
   display: inline;
-  color: #bbb;
+  color: #aaa;
 `;
 
 // TODO: 해시태그가 많아질 시 다음 라인으로 넘기지 않고 ... 처리 해야 함
@@ -32,7 +32,7 @@ const HashTagBox = styled.div`
 `;
 
 const HashTag = styled.span`
-  color: #bbb;
+  color: #aaa;
   margin-right: 8px;
 `;
 

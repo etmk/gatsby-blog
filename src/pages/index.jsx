@@ -1,13 +1,25 @@
 import React from 'react';
+import { Container } from 'semantic-ui-react';
+import styled from '@emotion/styled';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
+
+const Content = styled.div`
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  min-height: 62vh;
+`;
 
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" keywords={['gatsby', 'application', 'react']} />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
+    <Container text>
+      <Content>
+        <h2>Welcome to Sunjae's Blog</h2>
+        <p>This page is created by Gatsby and deployed by Netlify</p>
+      </Content>
+    </Container>
   </Layout>
 );
 
