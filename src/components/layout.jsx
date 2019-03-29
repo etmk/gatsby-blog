@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import store from '../utils/store';
 import DesktopContainer from './DesktopContainer';
 import MobileContainer from './MobileContainer';
+import ScrollButton from './ScrollButton';
 import { FINISH_LOADING, SET_PAGE } from '../modules/actionTypes';
 
 import './layout.css';
@@ -49,6 +50,7 @@ const ResponsiveContainer = ({ children }) => {
             >
               {children}
             </MobileContainer>
+            <ScrollButton scrollStepInPx="100" delayInMs="16.66" />
           </>
         )}
       />

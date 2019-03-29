@@ -1,3 +1,7 @@
+* {
+	outline: none;
+}
+
 body {
   background-color: rgb(250, 250, 250);
 }
@@ -35,4 +39,20 @@ div.ui.divider.footer-divider {
 
 .ui.large.pointing.secondary.top.fixed.menu {
   background-color: rgb(250, 250, 250); 
+}
+
+.scroll {
+  opacity: 0.7;
+  background-color: rgba(250, 250, 250, 0.9);
+  width: 40px;
+  height: 40px;
+  position: fixed;
+  bottom: 1.5em;
+  right: 1.5em;
+  border-radius: 200px; 
+  border: none;
+
+  &:hover {
+    opacity: 1;
+  }
 }
