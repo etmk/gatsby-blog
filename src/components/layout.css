@@ -51,8 +51,23 @@ div.ui.divider.footer-divider {
   right: 1.5em;
   border-radius: 200px; 
   border: none;
+  animation: bounce 2s infinite alternate;
+  -webkit-animation: bounce 2s infinite alternate;
+}
 
-  &:hover {
-    opacity: 1;
+@keyframes bounce {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-5px);
+  }
+}
+@-webkit-keyframes bounce {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-5px);
   }
 }
