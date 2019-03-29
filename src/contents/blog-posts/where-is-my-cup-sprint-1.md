@@ -1,5 +1,5 @@
 ---
-title: "[1/4] Where is my cup 서버 사이드 개발기"
+title: "[1/4] Where is my cup 서버 사이드 개발기 - Project Setting"
 date: "2019-02-09"
 draft: false
 path: "/dev/where-is-my-cup-sprint-1"

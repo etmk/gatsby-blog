@@ -1,5 +1,5 @@
 body {
-  background-color: rgba(0, 0, 0, 0.02);
+  background-color: rgb(250, 250, 250);
 }
 
 p {
@@ -31,4 +31,8 @@ div.ui.divider.footer-divider {
 
 .ui.large.pointing.secondary.menu {
   border-bottom: 1px solid rgba(34,36,38,.15);
+}
+
+.ui.large.pointing.secondary.top.fixed.menu {
+  background-color: rgb(250, 250, 250); 
 }

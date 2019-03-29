@@ -15,7 +15,7 @@ const Content = styled.div`
 `;
 
 const BlogPostBox = styled.div`
-  margin-bottom: 30px;
+  margin-top: 30px;
 `;
 
 const MarkerHeader = styled.h3`

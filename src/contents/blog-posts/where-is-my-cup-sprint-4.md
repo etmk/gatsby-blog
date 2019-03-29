@@ -1,5 +1,5 @@
 ---
-title: "[4/4] Where is my cup 서버 사이드 개발기"
+title: "[4/4] Where is my cup 서버 사이드 개발기 - HTTPS 적용과 JWT 인증"
 date: "2019-02-20"
 draft: false
 path: "/dev/where-is-my-cup-sprint-4"
@@ -20,7 +20,6 @@ SSL 이 적용된 ELB 그룹으로 들어오는 통신은 HTTPS 프로토콜이�
 
 ```
 [Client]     --HTTPS-->     [ELB]     --HTTP-->     [EC2 server]
-
               [443 PORT]             [Server PORT]
 ```
 

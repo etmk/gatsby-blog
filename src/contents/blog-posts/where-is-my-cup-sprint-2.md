@@ -1,5 +1,5 @@
 ---
-title: "[2/4] Where is my cup 서버 사이드 개발기"
+title: "[2/4] Where is my cup 서버 사이드 개발기 - Web Crawler 및 로깅 그리고 REST API"
 date: "2019-02-13"
 draft: false
 path: "/dev/where-is-my-cup-sprint-2"

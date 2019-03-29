@@ -5,7 +5,6 @@ import {
   Menu,
   Responsive,
   Segment,
-  Visibility,
   Divider,
 } from 'semantic-ui-react';
 import { connect } from 'react-redux';
@@ -23,12 +22,6 @@ const getWidth = () => {
 };
 
 class DesktopContainer extends Component {
-  state = { fixed: false }
-
-  hideFixedMenu = () => this.setState({ fixed: false })
-
-  showFixedMenu = () => this.setState({ fixed: true })
-
   onMenuClick = (page) => {
     const { setPage } = this.props;
     setPage({ [page]: true });
@@ -39,49 +32,43 @@ class DesktopContainer extends Component {
     const {
       home, dev, about, til,
     } = pages;
-    const { fixed } = this.state;
 
     return (
       <Responsive getWidth={getWidth} minWidth={Responsive.onlyTablet.minWidth}>
-        <Visibility
-          once={false}
-          onBottomPassed={this.showFixedMenu}
-          onBottomPassedReverse={this.hideFixedMenu}
+        <Segment
+          textAlign="center"
+          style={{ minHeight: 100, padding: '1em 0em' }}
+          vertical
         >
-          <Segment
-            textAlign="center"
-            style={{ minHeight: 100, padding: '1em 0em' }}
-            vertical
+          <Menu
+            fixed="top"
+            pointing
+            secondary
+            size="large"
           >
-            <Menu
-              fixed={fixed ? 'top' : null}
-              pointing={!fixed}
-              secondary={!fixed}
-              size="large"
-            >
-              <Container>
-                <Menu.Item style={{ padding: 0 }} as="span" active={home}>
-                  <Link style={styles.menuLink} to="/" onClick={() => this.onMenuClick('home')}>Home</Link>
-                </Menu.Item>
-                <Menu.Item style={{ padding: 0 }} as="span" active={dev}>
-                  <Link style={styles.menuLink} to="/dev" onClick={() => this.onMenuClick('dev')}>Dev</Link>
-                </Menu.Item>
-                <Menu.Item style={{ padding: 0 }} as="span" active={til}>
-                  <Link style={styles.menuLink} to="/til" onClick={() => this.onMenuClick('til')}>TIL</Link>
-                </Menu.Item>
-                <Menu.Item style={{ padding: 0 }} as="span" active={about}>
-                  <Link style={styles.menuLink} to="/about" onClick={() => this.onMenuClick('about')}>About</Link>
-                </Menu.Item>
-              </Container>
-            </Menu>
-            <br />
-            {children}
-            <Divider className="footer-divider" />
-            <footer style={{ marginTop: '3em', marginBottom: '5em' }}>
-              {`© ${new Date().getFullYear()} Sunjae Kim, All rights deserved`}
-            </footer>
-          </Segment>
-        </Visibility>
+            <Container>
+              <Menu.Item style={{ padding: 0 }} as="span" active={home}>
+                <Link style={styles.menuLink} to="/" onClick={() => this.onMenuClick('home')}>Home</Link>
+              </Menu.Item>
+              <Menu.Item style={{ padding: 0 }} as="span" active={dev}>
+                <Link style={styles.menuLink} to="/dev" onClick={() => this.onMenuClick('dev')}>Dev</Link>
+              </Menu.Item>
+              <Menu.Item style={{ padding: 0 }} as="span" active={til}>
+                <Link style={styles.menuLink} to="/til" onClick={() => this.onMenuClick('til')}>TIL</Link>
+              </Menu.Item>
+              <Menu.Item style={{ padding: 0 }} as="span" active={about}>
+                <Link style={styles.menuLink} to="/about" onClick={() => this.onMenuClick('about')}>About</Link>
+              </Menu.Item>
+            </Container>
+          </Menu>
+          <div style={{ minHeight: '2.85714286em' }} />
+          <br />
+          {children}
+          <Divider className="footer-divider" />
+          <footer style={{ marginTop: '3em', marginBottom: '5em' }}>
+            {`© ${new Date().getFullYear()} Sunjae Kim, All rights deserved`}
+          </footer>
+        </Segment>
       </Responsive>
     );
   }
