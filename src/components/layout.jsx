@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import { Provider } from 'react-redux';
+import { Loader, Dimmer } from 'semantic-ui-react';
 import store from '../utils/store';
 import DesktopContainer from './DesktopContainer';
 import MobileContainer from './MobileContainer';
@@ -25,7 +26,16 @@ const ResponsiveContainer = ({ children }) => {
     }
   }, []);
 
-  if (!isLoaded) return <div>Loading, please wait ...</div>;
+  const renderLoading = () => (
+    <div>
+      <Dimmer active inverted>
+        <Loader inverted>Loading</Loader>
+      </Dimmer>
+    </div>
+  );
+
+  if (!isLoaded) return renderLoading();
+
   return (
     <Provider store={store}>
       <StaticQuery
