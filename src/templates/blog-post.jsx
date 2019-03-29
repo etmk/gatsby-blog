@@ -10,6 +10,7 @@ const Content = styled.div`
   text-align: start;
   display: flex;
   flex-flow: column;
+  min-height: 68vh;
 `;
 
 const MarkedHeader = styled.h1`

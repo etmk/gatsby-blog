@@ -35,7 +35,7 @@ class DesktopContainer extends Component {
   }
 
   render() {
-    const { children, siteTitle, pages } = this.props;
+    const { children, pages } = this.props;
     const {
       home, dev, about, til,
     } = pages;
@@ -53,7 +53,6 @@ class DesktopContainer extends Component {
             style={{ minHeight: 100, padding: '1em 0em' }}
             vertical
           >
-            <h1>{siteTitle}</h1>
             <Menu
               fixed={fixed ? 'top' : null}
               pointing={!fixed}
@@ -67,11 +66,11 @@ class DesktopContainer extends Component {
                 <Menu.Item style={{ padding: 0 }} as="span" active={dev}>
                   <Link style={styles.menuLink} to="/dev" onClick={() => this.onMenuClick('dev')}>Dev</Link>
                 </Menu.Item>
-                <Menu.Item style={{ padding: 0 }} as="span" active={about}>
-                  <Link style={styles.menuLink} to="/about" onClick={() => this.onMenuClick('about')}>About</Link>
-                </Menu.Item>
                 <Menu.Item style={{ padding: 0 }} as="span" active={til}>
                   <Link style={styles.menuLink} to="/til" onClick={() => this.onMenuClick('til')}>TIL</Link>
+                </Menu.Item>
+                <Menu.Item style={{ padding: 0 }} as="span" active={about}>
+                  <Link style={styles.menuLink} to="/about" onClick={() => this.onMenuClick('about')}>About</Link>
                 </Menu.Item>
               </Container>
             </Menu>
@@ -90,7 +89,6 @@ class DesktopContainer extends Component {
 
 DesktopContainer.propTypes = {
   children: PropTypes.node.isRequired,
-  siteTitle: PropTypes.string.isRequired,
   setPage: PropTypes.func.isRequired,
   pages: PropTypes.shape({
     home: PropTypes.bool,

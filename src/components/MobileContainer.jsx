@@ -89,20 +89,6 @@ class MobileContainer extends Component {
           </Menu.Item>
           <Menu.Item
             as="span"
-            active={about}
-            onClick={() => this.onItemClick('aboutBtn')}
-          >
-            <Link
-              ref={(btn) => { this.aboutBtn = btn; }}
-              style={styles.menuLink}
-              to="/about"
-              onClick={() => this.onMenuClick('about')}
-            >
-              About
-            </Link>
-          </Menu.Item>
-          <Menu.Item
-            as="span"
             active={til}
             onClick={() => this.onItemClick('tilBtn')}
           >
@@ -113,6 +99,20 @@ class MobileContainer extends Component {
               onClick={() => this.onMenuClick('til')}
             >
               TIL
+            </Link>
+          </Menu.Item>
+          <Menu.Item
+            as="span"
+            active={about}
+            onClick={() => this.onItemClick('aboutBtn')}
+          >
+            <Link
+              ref={(btn) => { this.aboutBtn = btn; }}
+              style={styles.menuLink}
+              to="/about"
+              onClick={() => this.onMenuClick('about')}
+            >
+              About
             </Link>
           </Menu.Item>
         </Sidebar>

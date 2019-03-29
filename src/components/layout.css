@@ -14,10 +14,15 @@ a:hover {
   color: #333;
 }
 
+pre {
+  overflow: auto;
+}
+
 code {
   background:rgba(200,200,200, 0.2);
   padding:6px;
   font-size: 14.8px;
+  line-height: 2em;
 }
 
 div.ui.divider.footer-divider {

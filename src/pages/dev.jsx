@@ -11,6 +11,7 @@ import './dev.css';
 
 const Content = styled.div`
   text-align: start;
+  min-height: 68vh;
 `;
 
 const BlogPostBox = styled.div`

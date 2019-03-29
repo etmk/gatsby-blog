@@ -8,7 +8,7 @@ const Content = styled.div`
   display: flex;
   flex-flow: column;
   justify-content: center;
-  min-height: 62vh;
+  min-height: 68vh;
 `;
 
 const IndexPage = () => (
