@@ -18,15 +18,22 @@ a:hover {
   color: #333;
 }
 
-pre {
-  overflow: auto;
-}
-
 code {
   background:rgba(200,200,200, 0.2);
+  border-radius: 10px;
   padding:6px;
   font-size: 14.8px;
   line-height: 2em;
+  color: cadetblue;
+  margin: 0px 0.5em;
+}
+
+.colorscripter-code-table {
+  width: 100%;
+}
+
+.colorscripter-code-table div {
+  font-size: 90%;
 }
 
 div.ui.divider.footer-divider {

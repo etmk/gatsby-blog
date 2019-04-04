@@ -26,9 +26,9 @@ Restful 한 서버를 구현하기 위해 고민을 많이 했다. Data 의 reso
 
 `GET /api/resource/:id` 와 같은 라우팅 경로를 지정하여 리소스 중에서 특정 id 를 통해 조회할 수 있도록 하였다. 사용자 위치정보도 `GET /api/resource/:lat/:lng` 와 같은 형식으로 받도록 라우트 메소드를 구현하였는데 여기서 id 와 search query 등 여러 정보도 함께 받아야 하는 상황이 발생했다. 라우팅 경로 뒤에 전부 붙여보았다. 
 
-```javascript
-app.get('/api/resource/:id/:query/:lat/:lng');
-```
+<div class="colorscripter-code" style="color:#f0f0f0; font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important; overflow:auto"><table class="colorscripter-code-table" style="margin:0; padding:0; border:none; background-color:#272727; border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px; border-right:2px solid #4f4f4f"><div style="margin:0; padding:0; word-break:normal; text-align:right; color:#aaa; font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; line-height:160%"><div style="line-height:160%">1</div></div></td><td style="padding:6px 0"><div style="margin:0; padding:0; color:#f0f0f0; font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; line-height:160%"><div style="padding:0 6px; white-space:pre; line-height:160%">app.get(<span style="color:#ffd500">'/api/resource/:id/:query/:lat/:lng'</span>);</div></div></td></tr></table></div>
+
+<br />
 
 위의 API 작성 방식이 좋지 않다고 판단했고 아래와 같은 정보를 알게됐다.
 

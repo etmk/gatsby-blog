@@ -41,17 +41,17 @@ Node.js 에서 MongoDB 와 연결하여 쉽게 데이터를 읽고 쓰게 해주
 
 Document 의 field 의 값을 변경하기 위한 용도로만 사용하였었다.
 
-```
-User.findByIdAndUpdate( id, { $set:{ password: newPassword } } );
-```
+<div class="colorscripter-code" style="color:#f0f0f0; font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important; overflow:auto"><table class="colorscripter-code-table" style="margin:0; padding:0; border:none; background-color:#272727; border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px; border-right:2px solid #4f4f4f"><div style="margin:0; padding:0; word-break:normal; text-align:right; color:#aaa; font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; line-height:160%"><div style="line-height:160%">1</div></div></td><td style="padding:6px 0"><div style="margin:0; padding:0; color:#f0f0f0; font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; line-height:160%"><div style="padding:0 6px; white-space:pre; line-height:160%">User.findByIdAndUpdate(&nbsp;id,&nbsp;{&nbsp;$set:{&nbsp;password:&nbsp;newPassword&nbsp;}&nbsp;}&nbsp;);</div></div></td></tr></table></div>
+
+<br />
 
 만약 field 가 Object 타입이고 그 field 의 property 로 값을 할당하고 싶을 때는 어떻게 해야할지 고민을 했다. 처음에는 변경하고 싶은 field 를 가지고 있는 document 를 불러와서 해당 field 의 property 를 변경하고 다시 update 하는 방식으로 했었다. 이 방법은 Database 에 2번 트래픽을 발생시켰는데 1번에 해결할 수 있는 방법이 있을것 같았다.
 
 그래서 생각한 방법이 `$set` operator 를 사용해보는 것이었는데 아래와 같은 문법이 가능하였다.
 
-```
-User.findByIdAndUpdate( id, { $set:{ `hasFeedbacked.${cafeId}`: timestamp } } );
-```
+<div class="colorscripter-code" style="color:#f0f0f0; font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important; overflow:auto"><table class="colorscripter-code-table" style="margin:0; padding:0; border:none; background-color:#272727; border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px; border-right:2px solid #4f4f4f"><div style="margin:0; padding:0; word-break:normal; text-align:right; color:#aaa; font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; line-height:160%"><div style="line-height:160%">1</div></div></td><td style="padding:6px 0"><div style="margin:0; padding:0; color:#f0f0f0; font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; line-height:160%"><div style="padding:0 6px; white-space:pre; line-height:160%">User.findByIdAndUpdate(&nbsp;id,&nbsp;{&nbsp;$set:{&nbsp;`hasFeedbacked.${cafeId}`:&nbsp;timestamp&nbsp;}&nbsp;}&nbsp;);</div></div></td></tr></table></div>
+
+<br />
 
 이렇게 사용자가 특정 카페에 피드백을 남기면 `hasFeedbacked` 라는 object 에 property key 값으로 카페의 id, value 값으로 피드백을 남긴 시간을 세팅할 수 있었다.
 
@@ -61,10 +61,9 @@ User.findByIdAndUpdate( id, { $set:{ `hasFeedbacked.${cafeId}`: timestamp } } );
 
 기존에는 배열타입의 field 에 push 하는 방법을 알지 못해서 항상 find 한 document 의 field 에 push 하고 update 를 시켰었다. 이렇게 2번의 Database 로의 트래픽을 1번으로 줄이고 싶어서 분명히 push 로 해결할 수 있는 방법이 있을거라는 생각에 검색을 통해서 아래와 같은 방법을 알게 되었다.
 
-```
-User.findByIdAndUpdate( id, { $push:{ favorites: cafeId } } );
-```
+<div class="colorscripter-code" style="color:#f0f0f0; font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important; overflow:auto"><table class="colorscripter-code-table" style="margin:0; padding:0; border:none; background-color:#272727; border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px; border-right:2px solid #4f4f4f"><div style="margin:0; padding:0; word-break:normal; text-align:right; color:#aaa; font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; line-height:160%"><div style="line-height:160%">1</div></div></td><td style="padding:6px 0"><div style="margin:0; padding:0; color:#f0f0f0; font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; line-height:160%"><div style="padding:0 6px; white-space:pre; line-height:160%">User.findByIdAndUpdate(&nbsp;id,&nbsp;{&nbsp;$push:{&nbsp;favorites:&nbsp;cafeId&nbsp;}&nbsp;}&nbsp;);</div></div></td></tr></table></div>
 
+<br />
 <br />
 
 <span style="color: red;">*`ObjectId` 타입 때문에 발생한 이슈*</span>
