@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import './dev.css';
+import '../styles/pages/dev.css';
 
 const Content = styled.div`
   text-align: start;
