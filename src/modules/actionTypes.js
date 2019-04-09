@@ -1,4 +1,5 @@
-export const SET_PAGE = 'SET_PAGE';
 export const OPEN_SIDE_BAR = 'OPEN_SIDE_BAR';
 export const CLOSE_SIDE_BAR = 'CLOSE_SIDE_BAR';
 export const FINISH_LOADING = 'FINISH_LOADING';
+export const TOGGLE_IS_IN_DOCUMENT = 'TOGGLE_IS_IN_DOCUMENT';
+export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';

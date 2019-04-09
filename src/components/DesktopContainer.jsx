@@ -9,7 +9,7 @@ import {
 } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { Link } from 'gatsby';
-import { SET_PAGE } from '../modules/actionTypes';
+import { SET_CURRENT_PAGE } from '../modules/actionTypes';
 
 const styles = {
   menuLink: { padding: '1em 1.5em', color: '#333' },
@@ -23,15 +23,12 @@ const getWidth = () => {
 
 class DesktopContainer extends Component {
   onMenuClick = (page) => {
-    const { setPage } = this.props;
-    setPage({ [page]: true });
+    const { setCurrentPage } = this.props;
+    setCurrentPage(page);
   }
 
   render() {
-    const { children, pages } = this.props;
-    const {
-      home, dev, about, til,
-    } = pages;
+    const { children, currentPage } = this.props;
 
     return (
       <Responsive getWidth={getWidth} minWidth={Responsive.onlyTablet.minWidth}>
@@ -47,16 +44,16 @@ class DesktopContainer extends Component {
             size="large"
           >
             <Container>
-              <Menu.Item style={{ padding: 0 }} as="span" active={home}>
+              <Menu.Item style={{ padding: 0 }} as="span" active={currentPage === 'home'}>
                 <Link style={styles.menuLink} to="/" onClick={() => this.onMenuClick('home')}>Home</Link>
               </Menu.Item>
-              <Menu.Item style={{ padding: 0 }} as="span" active={dev}>
+              <Menu.Item style={{ padding: 0 }} as="span" active={currentPage === 'dev'}>
                 <Link style={styles.menuLink} to="/dev" onClick={() => this.onMenuClick('dev')}>Dev</Link>
               </Menu.Item>
-              <Menu.Item style={{ padding: 0 }} as="span" active={til}>
+              <Menu.Item style={{ padding: 0 }} as="span" active={currentPage === 'til'}>
                 <Link style={styles.menuLink} to="/til" onClick={() => this.onMenuClick('til')}>TIL</Link>
               </Menu.Item>
-              <Menu.Item style={{ padding: 0 }} as="span" active={about}>
+              <Menu.Item style={{ padding: 0 }} as="span" active={currentPage === 'about'}>
                 <Link style={styles.menuLink} to="/about" onClick={() => this.onMenuClick('about')}>About</Link>
               </Menu.Item>
             </Container>
@@ -76,20 +73,15 @@ class DesktopContainer extends Component {
 
 DesktopContainer.propTypes = {
   children: PropTypes.node.isRequired,
-  setPage: PropTypes.func.isRequired,
-  pages: PropTypes.shape({
-    home: PropTypes.bool,
-    dev: PropTypes.bool,
-    about: PropTypes.bool,
-    til: PropTypes.bool,
-  }).isRequired,
+  setCurrentPage: PropTypes.func.isRequired,
+  currentPage: PropTypes.string.isRequired,
 };
 
 export default connect(
   state => ({
-    pages: state.pages,
+    currentPage: state.pageState.currentPage,
   }),
   dispatch => ({
-    setPage: page => dispatch({ type: SET_PAGE, payload: page }),
+    setCurrentPage: currentPage => dispatch({ type: SET_CURRENT_PAGE, payload: { currentPage } }),
   }),
 )(DesktopContainer);

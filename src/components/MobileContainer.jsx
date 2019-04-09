@@ -10,7 +10,9 @@ import {
 } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { Link } from 'gatsby';
-import { SET_PAGE, OPEN_SIDE_BAR, CLOSE_SIDE_BAR } from '../modules/actionTypes';
+import {
+  OPEN_SIDE_BAR, CLOSE_SIDE_BAR, SET_CURRENT_PAGE,
+} from '../modules/actionTypes';
 
 /* global window */
 const getWidth = () => {
@@ -24,8 +26,8 @@ const styles = {
 
 class MobileContainer extends Component {
   onMenuClick = (page) => {
-    const { setPage } = this.props;
-    setPage({ [page]: true });
+    const { setCurrentPage } = this.props;
+    setCurrentPage(page);
   }
 
   onItemClick = (btn) => {
@@ -37,13 +39,15 @@ class MobileContainer extends Component {
     closeSideBar();
   }
 
+  onBackBtnClick = () => {
+    const { currentPage } = this.props;
+    this[`${currentPage}Btn`].click();
+  }
+
   render() {
     const {
-      children, siteTitle, pages, isOpened, openSideBar,
+      children, siteTitle, isOpened, openSideBar, isInDocument, currentPage,
     } = this.props;
-    const {
-      home, dev, about, til,
-    } = pages;
 
     return (
       <Responsive
@@ -61,7 +65,7 @@ class MobileContainer extends Component {
         >
           <Menu.Item
             as="span"
-            active={home}
+            active={currentPage === 'home'}
             onClick={() => this.onItemClick('homeBtn')}
           >
             <Link
@@ -75,7 +79,7 @@ class MobileContainer extends Component {
           </Menu.Item>
           <Menu.Item
             as="span"
-            active={dev}
+            active={currentPage === 'dev'}
             onClick={() => this.onItemClick('devBtn')}
           >
             <Link
@@ -89,7 +93,7 @@ class MobileContainer extends Component {
           </Menu.Item>
           <Menu.Item
             as="span"
-            active={til}
+            active={currentPage === 'til'}
             onClick={() => this.onItemClick('tilBtn')}
           >
             <Link
@@ -103,7 +107,7 @@ class MobileContainer extends Component {
           </Menu.Item>
           <Menu.Item
             as="span"
-            active={about}
+            active={currentPage === 'about'}
             onClick={() => this.onItemClick('aboutBtn')}
           >
             <Link
@@ -125,8 +129,8 @@ class MobileContainer extends Component {
           >
             <Container>
               <Menu pointing secondary size="large">
-                <Menu.Item onClick={openSideBar}>
-                  <Icon name="sidebar" />
+                <Menu.Item onClick={isInDocument ? this.onBackBtnClick : openSideBar}>
+                  { isInDocument ? <Icon name="angle left" size="large" /> : <Icon name="sidebar" />}
                 </Menu.Item>
                 <Menu.Item position="right">
                   <h4 style={{ margin: 0 }}>{siteTitle}</h4>
@@ -147,26 +151,23 @@ class MobileContainer extends Component {
 MobileContainer.propTypes = {
   children: PropTypes.node.isRequired,
   siteTitle: PropTypes.string.isRequired,
-  setPage: PropTypes.func.isRequired,
-  pages: PropTypes.shape({
-    home: PropTypes.bool,
-    dev: PropTypes.bool,
-    about: PropTypes.bool,
-    til: PropTypes.bool,
-  }).isRequired,
   isOpened: PropTypes.bool.isRequired,
   openSideBar: PropTypes.func.isRequired,
   closeSideBar: PropTypes.func.isRequired,
+  isInDocument: PropTypes.bool.isRequired,
+  currentPage: PropTypes.string.isRequired,
+  setCurrentPage: PropTypes.func.isRequired,
 };
 
 export default connect(
   state => ({
-    pages: state.pages,
     isOpened: state.sideBar.isOpened,
+    isInDocument: state.pageState.isInDocument,
+    currentPage: state.pageState.currentPage,
   }),
   dispatch => ({
-    setPage: page => dispatch({ type: SET_PAGE, payload: page }),
     openSideBar: () => dispatch({ type: OPEN_SIDE_BAR }),
     closeSideBar: () => dispatch({ type: CLOSE_SIDE_BAR }),
+    setCurrentPage: currentPage => dispatch({ type: SET_CURRENT_PAGE, payload: { currentPage } }),
   }),
 )(MobileContainer);

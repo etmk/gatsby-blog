@@ -1,8 +1,7 @@
 import { combineReducers } from 'redux';
-import pages from './pages';
 import sideBar from './sideBar';
-import isPageLoaded from './isPageLoaded';
+import pageState from './pageState';
 
-const reducer = combineReducers({ pages, sideBar, isPageLoaded });
+const reducer = combineReducers({ sideBar, pageState });
 
 export default reducer;

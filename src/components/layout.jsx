@@ -7,22 +7,22 @@ import store from '../utils/store';
 import DesktopContainer from './DesktopContainer';
 import MobileContainer from './MobileContainer';
 import ScrollButton from './ScrollButton';
-import { FINISH_LOADING, SET_PAGE } from '../modules/actionTypes';
+import { FINISH_LOADING, SET_CURRENT_PAGE } from '../modules/actionTypes';
 
 import '../styles/layout.css';
 
 /* global window */
 const ResponsiveContainer = ({ children }) => {
-  const [isLoaded, setIsLoaded] = useState(store.getState().isPageLoaded.isPageLoaded);
+  const [isLoaded, setIsLoaded] = useState(store.getState().pageState.isPageLoaded);
 
   useEffect(() => {
     if (!isLoaded) {
       const { pathname } = window.location;
       const splited = pathname.split('/')[1];
-      const endPoint = splited !== '' ? splited : 'home';
+      const currentPage = splited !== '' ? splited : 'home';
       setIsLoaded(true);
       store.dispatch({ type: FINISH_LOADING });
-      store.dispatch({ type: SET_PAGE, payload: { [endPoint]: true } });
+      store.dispatch({ type: SET_CURRENT_PAGE, payload: { currentPage } });
     }
   }, []);
 

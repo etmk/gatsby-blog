@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { graphql } from 'gatsby';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import { Container, Divider } from 'semantic-ui-react';
+import store from '../utils/store';
 import Layout from '../components/layout';
+import { TOGGLE_IS_IN_DOCUMENT } from '../modules/actionTypes';
 
 const Content = styled.div`
   margin-top: 1.5em;
@@ -29,23 +31,34 @@ const MarkDown = styled.div`
   font-size: larger;
 `;
 
-const Template = ({ data }) => {
-  const post = data.markdownRemark;
-  return (
-    <Layout>
-      <Container>
-        <Content>
-          <MarkedHeader>{post.frontmatter.title}</MarkedHeader>
-          <HeaderDate>
-            {post.frontmatter.date}
-          </HeaderDate>
-          <Divider />
-          <MarkDown dangerouslySetInnerHTML={{ __html: post.html }} />
-        </Content>
-      </Container>
-    </Layout>
-  );
-};
+class Template extends Component {
+  componentDidMount = () => {
+    store.dispatch({ type: TOGGLE_IS_IN_DOCUMENT });
+  }
+
+  componentWillUnmount = () => {
+    store.dispatch({ type: TOGGLE_IS_IN_DOCUMENT });
+  }
+
+  render = () => {
+    const { data } = this.props;
+    const post = data.markdownRemark;
+    return (
+      <Layout>
+        <Container>
+          <Content>
+            <MarkedHeader>{post.frontmatter.title}</MarkedHeader>
+            <HeaderDate>
+              {post.frontmatter.date}
+            </HeaderDate>
+            <Divider />
+            <MarkDown dangerouslySetInnerHTML={{ __html: post.html }} />
+          </Content>
+        </Container>
+      </Layout>
+    );
+  };
+}
 
 export const pageQuery = graphql`
   query($path: String!) {

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 import { Container } from 'semantic-ui-react';
-import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 
@@ -48,14 +47,11 @@ const TIL = ({ data }) => {
             <Link
               key={node.id}
               to={node.frontmatter.path}
-              css={css`
-              `}
             >
               <BlogPostBox>
                 <div className="blog-post">
                   <MarkerHeader>
                     {node.frontmatter.title}
-                    {' '}
                   </MarkerHeader>
                   <ArticleDate>{node.frontmatter.date}</ArticleDate>
                   <HashTagBox>
