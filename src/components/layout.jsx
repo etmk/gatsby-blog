@@ -9,7 +9,7 @@ import MobileContainer from './MobileContainer';
 import ScrollButton from './ScrollButton';
 import { FINISH_LOADING, SET_PAGE } from '../modules/actionTypes';
 
-import './layout.css';
+import '../styles/layout.css';
 
 /* global window */
 const ResponsiveContainer = ({ children }) => {
