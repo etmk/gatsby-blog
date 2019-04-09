@@ -18,9 +18,11 @@ project: "where-is-my-cup"
 
 SSL 이 적용된 ELB 그룹으로 들어오는 통신은 HTTPS 프로토콜이며 ELB 가 각 instance 에게 전달하는 통신은 HTTP 프로토콜이다. 이 flow 에 맞게 ELB 의 Security group 에는 Inbound 로 HTTPS 만 허락하도록 설정한다. ELB 에 리스너를 설정해줘야 하는데 이는 ELB 가 받은 통신을 instance 로 전달하는 방법에 대한 부분이다. HTTPS 로 받은 요청을 instance 에 HTTP 요청으로 다시 전달을 해줘야 하는데 이 때 `instance port` 에는 반드시 instance 에서 inbound 로 받기로 한 포트를 입력해줘야 한다. 그렇게 아래와 같은 흐름이 완성된다.
 
-<div class="colorscripter-code" style="color:#f0f0f0; font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important; overflow:auto"><table class="colorscripter-code-table" style="margin:0; padding:0; border:none; background-color:#272727; border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px; border-right:2px solid #4f4f4f"><div style="margin:0; padding:0; word-break:normal; text-align:right; color:#aaa; font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; line-height:160%"><div style="line-height:160%">1</div><div style="line-height:160%">2</div></div></td><td style="padding:6px 0"><div style="margin:0; padding:0; color:#f0f0f0; font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; line-height:160%"><div style="padding:0 6px; white-space:pre; line-height:160%">[Client]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--HTTPS--&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ELB]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--HTTP--&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EC2&nbsp;server]</div><div style="padding:0 6px; white-space:pre; line-height:160%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[443&nbsp;PORT]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Server&nbsp;PORT]</div></div></td></tr></table></div>
+```text
+[Client]     --HTTPS-->     [ELB]     --HTTP-->     [EC2 server]
+             [443 PORT]             [Server PORT]
+```
 
-<br />
 <br />
 
 <span style="color: red;">*구체적으로 적용하는 방법에 대해서는 다음 링크를 참조해보자 : [링크](https://github.com/Sunjae-Kim/TIL/blob/master/aws/apply-ssl-on-ec2.md)*</span>
