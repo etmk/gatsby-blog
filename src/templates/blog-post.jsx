@@ -94,13 +94,15 @@ class Template extends Component {
   }
 
   render = () => {
-    const { prevPost, post, nextPost } = this.getPostings();
-    return (
-      <Layout>
-        {this.renderPost({ prevPost, post, nextPost })}
-      </Layout>
-    );
-  };
+    if (typeof window !== 'undefined') {
+      const { prevPost, post, nextPost } = this.getPostings();
+      return (
+        <Layout>
+          {this.renderPost({ prevPost, post, nextPost })}
+        </Layout>
+      );
+    } return <></>;
+  }
 }
 
 export const pageQuery = graphql`
