@@ -3,6 +3,7 @@ import { graphql } from 'gatsby';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import { Container, Divider } from 'semantic-ui-react';
+import SEO from '../components/seo';
 import store from '../utils/store';
 import Layout from '../components/layout';
 import { TOGGLE_IS_IN_DOCUMENT } from '../modules/actionTypes';
@@ -45,6 +46,7 @@ class Template extends Component {
     const post = data.markdownRemark;
     return (
       <Layout>
+        <SEO title="Posting" keywords={post.frontmatter.tags} />
         <Container>
           <Content>
             <MarkedHeader>{post.frontmatter.title}</MarkedHeader>

@@ -13,7 +13,7 @@ const Content = styled.div`
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" keywords={['gatsby', 'application', 'react']} />
+    <SEO title="Home" keywords={['gatsby', 'netlify', 'react', 'blog']} />
     <Container text>
       <Content>
         <h2>Welcome to Sunjae's Blog</h2>
