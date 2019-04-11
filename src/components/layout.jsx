@@ -6,7 +6,6 @@ import { Loader, Dimmer } from 'semantic-ui-react';
 import store from '../utils/store';
 import DesktopContainer from './DesktopContainer';
 import MobileContainer from './MobileContainer';
-import ScrollButton from './ScrollButton';
 import { FINISH_LOADING, SET_CURRENT_PAGE } from '../modules/actionTypes';
 
 import '../styles/layout.css';
@@ -60,7 +59,6 @@ const ResponsiveContainer = ({ children }) => {
             >
               {children}
             </MobileContainer>
-            <ScrollButton scrollStepInPx="100" delayInMs="16.66" />
           </>
         )}
       />

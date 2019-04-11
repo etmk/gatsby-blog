@@ -24,6 +24,7 @@ class ScrollButton extends Component {
   }
 
   render() {
+    const { size } = this.props;
     return (
       <button
         type="button"
@@ -31,7 +32,7 @@ class ScrollButton extends Component {
         onClick={this.scrollToTop}
         className="scroll"
       >
-        <Icon name="angle up" size="big" />
+        <Icon name="angle up" size={size} />
       </button>
     );
   }
@@ -40,6 +41,7 @@ class ScrollButton extends Component {
 ScrollButton.propTypes = {
   scrollStepInPx: PropTypes.string.isRequired,
   delayInMs: PropTypes.string.isRequired,
+  size: PropTypes.string.isRequired,
 };
 
 export default ScrollButton;

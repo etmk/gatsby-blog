@@ -29,9 +29,11 @@ class Template extends Component {
       >
         <div className="blog-post">
           <div style={{ display: 'flex' }}>
-            <div style={{
-              display: 'flex', flex: 1, justifyContent: 'flex-start', alignItems: 'center',
-            }}
+            <div
+              className="prev-icon"
+              style={{
+                display: 'flex', flex: 1, justifyContent: 'flex-start', alignItems: 'center',
+              }}
             >
               {isPrev && <Icon name="angle left" size="large" />}
             </div>
@@ -43,9 +45,11 @@ class Template extends Component {
                 {post.frontmatter.tags.map(tag => <HashTag key={tag}>{tag}</HashTag>)}
               </HashTagBox>
             </div>
-            <div style={{
-              display: 'flex', flex: 1, justifyContent: 'flex-end', alignItems: 'center',
-            }}
+            <div
+              className="next-icon"
+              style={{
+                display: 'flex', flex: 1, justifyContent: 'flex-end', alignItems: 'center',
+              }}
             >
               {!isPrev && <Icon name="angle right" size="large" />}
             </div>
