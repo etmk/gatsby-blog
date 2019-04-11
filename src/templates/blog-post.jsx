@@ -35,7 +35,7 @@ class Template extends Component {
             >
               {isPrev && <Icon name="angle left" size="large" />}
             </div>
-            <div style={{ flex: 15 }}>
+            <div style={{ flex: 10, overflow: 'auto' }}>
               <MarkerHeader>
                 {post.frontmatter.title}
               </MarkerHeader>

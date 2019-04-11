@@ -2,6 +2,10 @@
 	outline: none;
 }
 
+h1, h2, h3, h4, h5, span, a, p {
+  word-wrap: break-word;
+}
+
 input,
 textarea,
 button,
