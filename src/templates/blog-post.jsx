@@ -9,7 +9,7 @@ import { TOGGLE_IS_IN_DOCUMENT } from '../modules/actionTypes';
 import {
   BlogPostBox, MarkerHeader, HashTagBox, HashTag,
   Content, MarkedHeader, HeaderDate, MarkDown,
-} from './styledTags';
+} from '../styles/styledTags';
 
 /* global window */
 class Template extends Component {

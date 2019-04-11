@@ -1,5 +1,10 @@
 import styled from '@emotion/styled';
 
+export const ArticleDate = styled.h5`
+display: inline;
+color: #aaa;
+`;
+
 export const Content = styled.div`
   margin-top: 1.5em;
   text-align: start;

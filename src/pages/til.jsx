@@ -1,40 +1,16 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 import { Container } from 'semantic-ui-react';
-import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import '../styles/pages/dev.css';
 
-const Content = styled.div`
-  text-align: start;
-  min-height: 68vh;
-`;
-
-const BlogPostBox = styled.div`
-  margin-top: 30px;
-`;
-
-const MarkerHeader = styled.h3`
-  margin-bottom: 0px;
-`;
-
-const ArticleDate = styled.h5`
-  display: inline;
-  color: #aaa;
-`;
-
-// TODO: 해시태그가 많아질 시 다음 라인으로 넘기지 않고 ... 처리 해야 함
-const HashTagBox = styled.div`
-  margin-top: 7px;
-`;
-
-const HashTag = styled.span`
-  color: #aaa;
-  margin-right: 8px;
-`;
+import {
+  BlogPostBox, MarkerHeader, HashTagBox, HashTag,
+  Content, ArticleDate,
+} from '../styles/styledTags';
 
 const TIL = ({ data }) => {
   const target = data.allMarkdownRemark.edges.filter(ele => ele.node.frontmatter.category === 'til');

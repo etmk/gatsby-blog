@@ -1,7 +1,6 @@
 import React from 'react';
 import { Container } from 'semantic-ui-react';
 import styled from '@emotion/styled';
-
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 

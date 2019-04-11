@@ -21,10 +21,6 @@ const getWidth = () => {
   return isSSR ? Responsive.onlyTablet.minWidth : window.innerWidth;
 };
 
-const styles = {
-  menuLink: { color: '#333' },
-};
-
 class MobileContainer extends Component {
   onMenuClick = (page) => {
     const { setCurrentPage } = this.props;
@@ -73,7 +69,7 @@ class MobileContainer extends Component {
             >
               <Link
                 ref={(btn) => { this.homeBtn = btn; }}
-                style={styles.menuLink}
+                style={{ color: '#333' }}
                 to="/"
                 onClick={() => this.onMenuClick('home')}
               >
@@ -87,7 +83,7 @@ class MobileContainer extends Component {
             >
               <Link
                 ref={(btn) => { this.devBtn = btn; }}
-                style={styles.menuLink}
+                style={{ color: '#333' }}
                 to="/dev"
                 onClick={() => this.onMenuClick('dev')}
               >
@@ -101,7 +97,7 @@ class MobileContainer extends Component {
             >
               <Link
                 ref={(btn) => { this.tilBtn = btn; }}
-                style={styles.menuLink}
+                style={{ color: '#333' }}
                 to="/til"
                 onClick={() => this.onMenuClick('til')}
               >
@@ -115,7 +111,7 @@ class MobileContainer extends Component {
             >
               <Link
                 ref={(btn) => { this.aboutBtn = btn; }}
-                style={styles.menuLink}
+                style={{ color: '#333' }}
                 to="/about"
                 onClick={() => this.onMenuClick('about')}
               >
