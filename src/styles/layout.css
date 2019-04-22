@@ -48,6 +48,11 @@ a:hover {
   color: #333;
 }
 
+.gatsby-resp-image-image {
+  box-shadow: none !important;
+  background-color: rgb(250,250,250);
+}
+
 div.ui.divider.footer-divider {
   margin-top: 5em;
 }
