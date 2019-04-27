@@ -29,14 +29,16 @@ class Template extends Component {
       >
         <div className="blog-post">
           <div style={{ display: 'flex' }}>
-            <div
-              className="prev-icon"
+
+          <div
+              className="next-icon"
               style={{
                 display: 'flex', flex: 1, justifyContent: 'flex-start', alignItems: 'center',
               }}
             >
-              {isPrev && <Icon name="angle left" size="large" />}
+              {!isPrev && <Icon name="angle left" size="large" />}
             </div>
+
             <div style={{ flex: 10, overflow: 'auto' }}>
               <MarkerHeader>
                 {post.frontmatter.title}
@@ -45,14 +47,18 @@ class Template extends Component {
                 {post.frontmatter.tags.map(tag => <HashTag key={tag}>{tag}</HashTag>)}
               </HashTagBox>
             </div>
+
             <div
-              className="next-icon"
+              className="prev-icon"
               style={{
                 display: 'flex', flex: 1, justifyContent: 'flex-end', alignItems: 'center',
               }}
             >
-              {!isPrev && <Icon name="angle right" size="large" />}
+              {isPrev && <Icon name="angle right" size="large" />}
             </div>
+
+
+
           </div>
         </div>
       </Link>
@@ -71,8 +77,8 @@ class Template extends Component {
           <Divider />
           <MarkDown dangerouslySetInnerHTML={{ __html: post.html }} />
           <div style={{ marginTop: '30px' }}>
-            {prevPost && this.renderCard(prevPost, true)}
             {nextPost && this.renderCard(nextPost, false)}
+            {prevPost && this.renderCard(prevPost, true)}
           </div>
         </Content>
       </Container>
