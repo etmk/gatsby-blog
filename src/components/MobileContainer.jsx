@@ -128,7 +128,7 @@ class MobileContainer extends Component {
             >
               <Container>
                 <Menu pointing secondary size="large">
-                  <Menu.Item className="prev-icon" onClick={isInDocument ? this.onBackBtnClick : openSideBar}>
+                  <Menu.Item className="next-icon" onClick={isInDocument ? this.onBackBtnClick : openSideBar}>
                     {isInDocument ? <Icon name="angle left" size="large" /> : <Icon name="sidebar" />}
                   </Menu.Item>
                   <Menu.Item position="right">
