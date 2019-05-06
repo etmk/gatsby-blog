@@ -1,5 +1,6 @@
 * {
-	outline: none;
+  outline: none;
+  letter-spacing: 0.5px;
 }
 
 @media (max-width: 702px) {
@@ -40,6 +41,22 @@ a {
 
 a:hover {
   color: #333;
+}
+
+/* Colors */
+red {
+  color: red;
+}
+
+gray {
+  color: #bbb;
+}
+
+.gatsby-resp-image-wrapper {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  margin-left: 0% !important;
+  margin-right: 0% !important;
 }
 
 .gatsby-resp-image-image {

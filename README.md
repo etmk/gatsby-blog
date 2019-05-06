@@ -6,9 +6,10 @@ Created by Gatsby and deployed by Netlify.
 
 ## Future work
 
-- [ ] Searching
-- [ ] Filtering by category
+- [ ] Filter blog posts by tag
 - [ ] Create an awesome image for Home
+- [ ] Paginate blog posts
+- [ ] Apply Disqus library
 
 <br />
 

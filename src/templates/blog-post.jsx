@@ -75,7 +75,7 @@ class Template extends Component {
             {post.frontmatter.date}
           </HeaderDate>
           <Divider />
-          <MarkDown dangerouslySetInnerHTML={{ __html: post.html }} />
+          <MarkDown id="markdown" dangerouslySetInnerHTML={{ __html: post.html }} />
           <div style={{ marginTop: '30px' }}>
             {nextPost && this.renderCard(nextPost, false)}
             {prevPost && this.renderCard(prevPost, true)}
