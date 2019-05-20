@@ -1,6 +1,8 @@
 # Sunjae's Blog
 
-Created by Gatsby and deployed by Netlify.
+https://blog.sunjae-kim.com
+
+This blog id created by Gatsby and deployed by Netlify.
 
 <br />
 
