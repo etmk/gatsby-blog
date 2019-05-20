@@ -2,7 +2,7 @@
 
 https://blog.sunjae-kim.com
 
-This blog id created by Gatsby and deployed by Netlify.
+This blog is created by Gatsby and deployed by Netlify.
 
 <br />
 
