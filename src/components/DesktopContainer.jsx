@@ -43,7 +43,7 @@ class DesktopContainer extends Component {
             secondary
             size="large"
           >
-            <Container>
+            <Container text>
               <Menu.Item style={{ padding: 0 }} as="span" active={currentPage === 'home'}>
                 <Link style={styles.menuLink} to="/" onClick={() => this.onMenuClick('home')}>Home</Link>
               </Menu.Item>

@@ -73,7 +73,7 @@ class Template extends Component {
   renderPost = ({ prevPost, post, nextPost }) => (
     <>
       <SEO title="Posting" keywords={post.frontmatter.tags} />
-      <Container>
+      <Container text>
         <Content>
           <MarkedHeader>{post.frontmatter.title}</MarkedHeader>
           <HeaderDate>{post.frontmatter.date}</HeaderDate>
