@@ -7,8 +7,14 @@ import store from '../utils/store';
 import Layout from '../components/layout';
 import { TOGGLE_IS_IN_DOCUMENT } from '../modules/actionTypes';
 import {
-  BlogPostBox, MarkerHeader, HashTagBox, HashTag,
-  Content, MarkedHeader, HeaderDate, MarkDown,
+  BlogPostBox,
+  MarkerHeader,
+  HashTagBox,
+  HashTag,
+  Content,
+  MarkedHeader,
+  HeaderDate,
+  MarkDown,
 } from '../styles/styledTags';
 
 /* global window */
@@ -23,42 +29,41 @@ class Template extends Component {
 
   renderCard = (post, isPrev) => (
     <BlogPostBox>
-      <Link
-        key={post.id}
-        to={post.frontmatter.path}
-      >
+      <Link key={post.id} to={post.frontmatter.path}>
         <div className="blog-post">
           <div style={{ display: 'flex' }}>
-
-          <div
+            <div
               className="next-icon"
               style={{
-                display: 'flex', flex: 1, justifyContent: 'flex-start', alignItems: 'center',
+                display: 'flex',
+                flex: 1,
+                justifyContent: 'flex-start',
+                alignItems: 'center',
               }}
             >
               {!isPrev && <Icon name="angle left" size="large" />}
             </div>
 
             <div style={{ flex: 10, overflow: 'auto' }}>
-              <MarkerHeader>
-                {post.frontmatter.title}
-              </MarkerHeader>
+              <MarkerHeader>{post.frontmatter.title}</MarkerHeader>
               <HashTagBox>
-                {post.frontmatter.tags.map(tag => <HashTag key={tag}>{tag}</HashTag>)}
+                {post.frontmatter.tags.map(tag => (
+                  <HashTag key={tag}>{tag}</HashTag>
+                ))}
               </HashTagBox>
             </div>
 
             <div
               className="prev-icon"
               style={{
-                display: 'flex', flex: 1, justifyContent: 'flex-end', alignItems: 'center',
+                display: 'flex',
+                flex: 1,
+                justifyContent: 'flex-end',
+                alignItems: 'center',
               }}
             >
               {isPrev && <Icon name="angle right" size="large" />}
             </div>
-
-
-
           </div>
         </div>
       </Link>
@@ -71,9 +76,10 @@ class Template extends Component {
       <Container>
         <Content>
           <MarkedHeader>{post.frontmatter.title}</MarkedHeader>
-          <HeaderDate>
-            {post.frontmatter.date}
-          </HeaderDate>
+          <HeaderDate>{post.frontmatter.date}</HeaderDate>
+          <HashTagBox>
+            { post.frontmatter.tags.map(tag => <HashTag key={tag}>{ tag }</HashTag>) }
+          </HashTagBox>
           <Divider />
           <MarkDown id="markdown" dangerouslySetInnerHTML={{ __html: post.html }} />
           <div style={{ marginTop: '30px' }}>
@@ -83,7 +89,7 @@ class Template extends Component {
         </Content>
       </Container>
     </>
-  );
+  )
 
   getPostings = () => {
     const { data } = this.props;
@@ -106,12 +112,9 @@ class Template extends Component {
   render = () => {
     if (typeof window !== 'undefined') {
       const { prevPost, post, nextPost } = this.getPostings();
-      return (
-        <Layout>
-          {this.renderPost({ prevPost, post, nextPost })}
-        </Layout>
-      );
-    } return <></>;
+      return <Layout>{this.renderPost({ prevPost, post, nextPost })}</Layout>;
+    }
+    return <></>;
   }
 }
 
