@@ -16,13 +16,13 @@ Restful 한 서버를 구현하기 위해 고민을 많이 했다. Data 의 reso
 
 <span style="color: red;">*특정 리소스에 접근하기 위한 정보를 어떤 형태로 받을것인가?*</span>
 
-**Body 를 사용** : 사용자 작성 및 수정 정보
+**Body 를 사용** : Database 에 작성되는 정보, server 에서 결정한 general 한 정보
 
 `POST` 나 `PUT` 요청에서는 body 를 통해 작성할 데이터를 전송하기 때문에 body 에 필요한 모든 데이터를 담아서 서버로 전달하도록 구현했었다. 그러나 `GET` 혹은 `DELETE` 요청 등은 body 에 담아서 데이터를 전달 받을 수 없기 때문에 많은 양의 정보가 요구될 때 어떤 경로로 받는게 best practice 인지 고민하게 됐다. 
 
 <br />
 
-**Param 을 사용** : 리소스의 근간이 되는 정보
+**Path variable 을 사용** : 리소스의 근간이 되는 정보
 
 `GET /api/resource/:id` 와 같은 라우팅 경로를 지정하여 리소스 중에서 특정 id 를 통해 조회할 수 있도록 하였다. 사용자 위치정보도 `GET /api/resource/:lat/:lng` 와 같은 형식으로 받도록 라우트 메소드를 구현하였는데 여기서 id 와 search query 등 여러 정보도 함께 받아야 하는 상황이 발생했다. 라우팅 경로 뒤에 전부 붙여보았다. 
 
@@ -34,13 +34,13 @@ app.get('/api/resource/:id/:query/:lat/:lng');
 
 <br />
 
-**Query 를 사용** : 리소스의 sorting 및 filtering 의 기준이 되는 정보 
+**Query String 사용** : 리소스의 sorting 및 filtering 의 기준이 되는 정보 
 
-Naver 검색 페이지 등 여러 포털사이트에서 uri 마지막에 `?query=keyword` 와 같이 되어있는 곳이 많다. 리소스를 검색해서 추려내거나 정렬, 혹은 일정 기준으로 필터링 등을 할 때 필요한 정보들을 주로 query 로 받도록 구현한다.
+Naver 검색 페이지 등 여러 포털사이트에서 uri 마지막에 `?query=keyword` 와 같이 되어있는 곳이 많다. 리소스를 검색해서 추려내거나 정렬, 혹은 일정 기준으로 필터링 등을 할 때 필요한 정보들을 주로 query string 로 받도록 구현한다.
 
 <br />
 
-**Header 를 사용** : 민감할 수 있는 정보
+**Header 를 사용** : 요청에대한 정보와 민감할 수 있는 정보
 
 Header 에는 사용자 인증에 필요한 token 이나 사용자의 현재위치에 대한 정보 등 민감할 수 있는 정보를 담아서 통신했다. 위 param 을 통해 받도록 했던 `latitude` 와 `longitute` 를 header 에 담아서 전달했다. 
 
